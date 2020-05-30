@@ -1,0 +1,181 @@
+<style>
+    .ui {
+        color: green;
+        text-decoration: none;
+    }
+
+    ul {
+		list-style: disc;
+     }
+
+    .code {
+        background-color: whitesmoke;
+        font-family: monospace;
+        font-size: 10pt;
+    }
+</style>
+<h3>Readme</h3>
+<h4><a href="#github">Prismatik Art-Net plugin</a></h4> <!--TODO: Hier Github Link rein  -->
+<a class="ui" href="site/index.html">Back</a>
+
+<hr>
+<h4>Table of contents</h4>
+<ul>
+    <li><a href="#dependencies">Dependencies</a></li>
+    <li><a href="#configuration">Configuration</a></li>
+    <li><a href="#start_the_plugin">Start the plugin</a></li>
+    <li><a href="#troubleshooting">Troubleshooting</a></li>
+    <li><a href="#useful_urls">Useful URLs</a></li>
+</ul>
+
+<hr>
+<h4 id="dependencies">Dependencies</h4>
+<ul>
+    <li><a href="https://github.com/verycollective/stupidArtnet">StupidArtnet</a></li>
+    <li><a href="https://www.python.org/downloads/">Python 3.6</a></li>
+    <li><a href="https://github.com/psieg/Lightpack/releases">Prismatik</a> (Tested on 5.11.2.22)</li>
+    <li><a href="https://github.com/Atarity/Lightpack/blob/master/Software/apiexamples/pyLightpack/lightpack.py">lightpack.py</a> (extended by Lasse G&ouml;tte)</li>
+    <p>You also need bs4 for the log tool:</p>
+    <p class="code">pip install beautifulsoup4</p>
+</ul>
+<hr>
+<h4>Installation</h4>
+<p>Install Python (I tested it on Python 3.6.9, but it should work on the current version)</p>
+<p>In Prismatik: </p>
+<img src="site/res/prismatik.png" height="50" align="right">
+<ul>
+    <li>Setup your Device (you can use this plugin with every Prismatik compatible device. If your only Device is the Art-Net Node, choose <i>Virtual LED device</i>)</li>
+    <li>Check <i>Expert mode</i> under the <i>Profiles</i> menu</li><br><img src="site/res/profiles.png" height="50" >
+    <li>Check <i>Enable server</i> under the <i>Experimental</i> menu</li><br><img src="site/res/experimental.png" height="50" >
+</ul>
+<p>Download and extract the repository</p>
+<p>Place ArtNet folder from the extracted repo in the Prismatik plugin directory:</p>
+<ul>
+    <li>Windows: <i>C:\Users\username\Prismatik\Plugins\</i></li>
+    <li>Linux: <i>/home/username/.Prismatik/Plugins/</i></li>
+</ul>
+<p>Adjust settings in the ArtNet.ini file (instructions in the next chapter)</p>
+<hr>
+
+<h4 id="configuration">Configuration</h4>
+<img src="site/res/ini.png" height="60" align="right">
+<p>Edit <b>ArtNet.ini</b> in the ArtNet plugin folder with your preferred text editor</p>
+<ul>
+    <li>
+        <b>[Main]</b>
+        <ul>
+            <li style="list-style: circle">Uncomment the <i>Execute</i> line depending on your operating system by removing the <i>#</i> at the beginning</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>[Lightpack]</b>
+        <ul>
+            <li style="list-style: circle">Generate a Api-key in the <i>Experimental</i> menu in Prismatik and copy it</li><br><img src="site/res/experimental.png" height="50" >
+            <li style="list-style: circle">Paste the Api-key in the <i>key</i> line in the ini file</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>[Artnet]</b>
+        <ul>
+            <li style="list-style: circle">Enter the IP of your Art-Net node in the <i>host</i> line</li>
+            <li style="list-style: circle">Enter the DMX-universe you want to use in the <i>universe</i> line</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>[Fixtures]</b>
+        <ul>
+            <p>Create your fixtures like the example</p>
+            <li style="list-style: circle">Start with a title like <b>[Fixture_xxx]</b> (xxx is the name, you can customize. I recommend 001,002,...)</li>
+            <li style="list-style: circle">Enter the DMX channel range in the <i>range</i> line (the range consists two numbers, separated by a ",". The first number is the start channel and the second number is the channel count)</li>
+            <li style="list-style: circle">Enter the DMX channel types in the <i>mapping</i> line (the types are R=red, G=green, B=blue, D=dimmer, -=not in use)</li>
+            <li style="list-style: circle">The channel types are entered in channel order. Each fixture has to have <u>just one</u> of the types (R,G,B,D). Other channel types are not needed and marked by -</li>
+            <li style="list-style: circle">Below is an example for an 4 channel RGBAW+Dimmer fixture on channel 1</li>
+            <p class="code">[Fixture_001]<br>range=1,6<br>mapping=RGB--D</p>
+            <li style="list-style: circle">The order of the fixtures in the ini file is mapped to the order of the LEDs in Prismatik</li>
+        </ul>
+    </li>
+    <br/>
+</ul>
+<br/>
+<hr>
+
+<h4 id="start_the_plugin">Start the plugin</h4>
+<img src="site/res/plugins.png" height="60" align="right">
+<ul>
+    <li>Click the <i>refresh</i> button in the <i>Plugins</i> menu in Prismatik</li>&nbsp;&nbsp;<img src="site/res/refresh.png" height="30">
+    <li>Check the <i>Art-Net</i> plugin in the <i>Plugins</i> menu in Prismatik</li>
+    <p>-> The text in the plugin name should now show <i>(running)</i><br> If it shows <i>(not running)</i>, please read the <i>Troubleshooting</i> chapter</p>
+</ul>
+
+<hr>
+<h4 id="troubleshooting">Troubleshooting</h4>
+<img src="site/res/plugins.png" height="60" align="right">
+<ul>
+    <li>Click on the <i>Art-Net</i> plugin in the <i>Plugins</i> menu</li>
+    <li>Click on <i>Log</i> in the <i>Info</i> field</li>
+    <li>If the log is empty, make sure you set the right path to the Python executable in the ini file</li>
+    <br/>
+    <li>
+        <b>ERROR-01</b>
+        <ul>
+            <li style="list-style: circle">One or both values in the fixtures range in the ini file are 0</li>
+            <li style="list-style: circle">The first valid channel and the minimum channel count is 1</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-02</b>
+        <ul>
+            <li style="list-style: circle">The channel range is out of range (1-512)</li>
+            <li style="list-style: circle">Make sure, the start channel is not defined below 1 or above 512</li>
+            <li style="list-style: circle">Make sure, the range is not reaching out of 512 (starting at the start channel)</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-03</b>
+        <ul>
+            <li style="list-style: circle">Only the characters <i>R,G,B,D,-</i> are allowed in the fixture mapping</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-04</b>
+        <ul>
+            <li style="list-style: circle">Each character of <i>R,G,B,D,-</i> is unique in the fixture mapping</li>
+            <li style="list-style: circle">If your DMX device has multiple RGB channels (for example a LED-bar), define multiple fixtures for it</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-05</b>
+        <ul>
+            <li style="list-style: circle">Each character of <i>R,G,B,D,-</i> has to be exactly once in each fixture's mapping</li>
+            <li style="list-style: circle">If your DMX device has no dimmer, define it as a 4 channel device with the 4th channel as D (dimmer)</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-06</b>
+        <ul>
+            <li style="list-style: circle">The amount of <i>R,G,B,D,-</i> characters in the fixture mapping has to match the channel count, defined in the fixture range</li>
+        </ul>
+    </li>
+    <br/>
+    <li>
+        <b>ERROR-07</b>
+        <ul>
+            <li style="list-style: circle">You have to define as many fixtures as LEDs, defined in Prismatik</li>
+        </ul>
+    </li>
+    <br/>
+</ul>
+
+<hr>
+<h4 id="useful_urls">Useful URLs</h4>
+<ul>
+    <li><a href="https://robertoostenveld.nl/art-net-to-dmx512-with-esp8266/">Build a simple diy Art-Net node</a></li>
+</ul>
