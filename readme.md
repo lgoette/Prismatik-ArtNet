@@ -7,6 +7,7 @@
 #### Table of contents
 
 -   [Dependencies](#dependencies)
+-   [Installation](#installation)
 -   [Configuration](#configuration)
 -   [Start the plugin](#start_the_plugin)
 -   [Troubleshooting](#troubleshooting)
@@ -29,7 +30,7 @@ Install Python (I tested it on Python 3.6.9, but it should work on the current v
 
 In Prismatik:
 
-![](ArtNet/site/res/prismatik.png)
+![](site/res/prismatik.png)
 
 -   Setup your Device (you can use this plugin with every Prismatik compatible device. If your only Device is the Art-Net Node, choose *Virtual LED device*)
 -   Check *Expert mode* under the *Profiles* menu
@@ -48,7 +49,7 @@ Adjust settings in the ArtNet.ini file (instructions in the next chapter)
 
 #### Configuration
 
-![](ArtNet/site/res/ini.png)
+![](site/res/ini.png)
 
 Edit **ArtNet.ini** in the ArtNet plugin folder with your preferred text editor
 
@@ -72,7 +73,7 @@ Edit **ArtNet.ini** in the ArtNet plugin folder with your preferred text editor
 
 #### Start the plugin
 
-![](ArtNet/site/res/plugins.png)
+![](site/res/plugins.png)
 
 -   Click the *refresh* button in the *Plugins* menu in Prismatik
 -   Check the *Art-Net* plugin in the *Plugins* menu in Prismatik
@@ -81,7 +82,7 @@ Edit **ArtNet.ini** in the ArtNet plugin folder with your preferred text editor
 
 #### Troubleshooting
 
-![](ArtNet/site/res/plugins.png)
+![](site/res/plugins.png)
 
 -   Click on the *Art-Net* plugin in the *Plugins* menu
 -   Click on *Log* in the *Info* field
