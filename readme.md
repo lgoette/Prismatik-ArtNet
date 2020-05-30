@@ -1,6 +1,6 @@
 ### Readme
 
-#### [Prismatik Art-Net plugin](#github)
+#### [Prismatik Art-Net plugin](https://github.com/lgoette/Prismatik-ArtNet)
 
 * * * * *
 
