@@ -1,6 +1,7 @@
 ### Readme
 
 #### [Prismatik Art-Net plugin](https://github.com/lgoette/Prismatik-ArtNet)
+This plugin adds ArtNet support to your Prismatik software. ArtNet is a protocol that allows DMX lighting data to be transmitted over an ethernet network. The plugin talks to an ArtNet node, connected to your DMX lighting fixtures with DMX-cables.
 
 * * * * *
 
