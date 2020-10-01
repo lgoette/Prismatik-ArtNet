@@ -30,7 +30,7 @@ This plugin adds ArtNet support to your Prismatik software. ArtNet is a protocol
 
 Install Python (I tested it on Python 3.6.9, but it should work on the current version)
 
-Install Beautiful Soup 4 by entering ``` pip install bs4 ``` in the Terminal.
+Install Beautiful Soup 4 by entering ``` pip install bs4 ``` in the terminal.
 
 In Prismatik:
 
