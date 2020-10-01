@@ -20,6 +20,7 @@ This plugin adds ArtNet support to your Prismatik software. ArtNet is a protocol
 
 -   [StupidArtnet](https://github.com/verycollective/stupidArtnet)
 -   [Python 3.6](https://www.python.org/downloads/)
+-   [Beautiful Soup 4](https://pypi.org/project/beautifulsoup4/)
 -   [Prismatik](https://github.com/psieg/Lightpack/releases) (Tested on 5.11.2.22)
 -   [lightpack.py](https://github.com/Atarity/Lightpack/blob/master/Software/apiexamples/pyLightpack/lightpack.py) (extended by Lasse Götte)
 
@@ -28,6 +29,8 @@ This plugin adds ArtNet support to your Prismatik software. ArtNet is a protocol
 #### Installation
 
 Install Python (I tested it on Python 3.6.9, but it should work on the current version)
+
+Install Beautiful Soup 4 by entering ``` pip install bs4 ``` in the Terminal.
 
 In Prismatik:
 
