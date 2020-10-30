@@ -58,8 +58,6 @@ Adjust settings in the ArtNet.ini file (instructions in the next chapter)
 
 Edit **ArtNet.ini** in the ArtNet plugin folder with your preferred text editor
 
--   **[Main]**
-    -   Uncomment the *Execute* line depending on your operating system by removing the *\#* at the beginning
 -   **[Lightpack]**
     -   Generate a Api-key in the *Experimental* menu in Prismatik and copy it
     -   Paste the Api-key in the *key* line in the ini file
