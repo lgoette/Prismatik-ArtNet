@@ -21,10 +21,9 @@ This plugin adds ArtNet support to your Prismatik software. ArtNet is a protocol
 -   [StupidArtnet](https://github.com/verycollective/stupidArtnet)
 -   [Python 3.6](https://www.python.org/downloads/)
 -   [Beautiful Soup 4](https://pypi.org/project/beautifulsoup4/)
--   [Prismatik](https://github.com/psieg/Lightpack/releases) (Tested on 5.11.2.22 Linux and 5.11.2.21 Windows)
+-   [Prismatik (unofficail fork)](https://github.com/psieg/Lightpack/releases) (Tested on 5.11.2.22 Linux and 5.11.2.21 Windows)
 -   [lightpack.py](https://github.com/Atarity/Lightpack/blob/master/Software/apiexamples/pyLightpack/lightpack.py) (extended by Lasse Götte)
 
-Note: It seems like the plugin is not working on versions from the unofficial Prismatik fork higher than 5.11.2.21 on Windows
 * * * * *
 
 #### Installation
