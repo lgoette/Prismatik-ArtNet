@@ -131,23 +131,36 @@ class ArtNet:
                 fp.write(self.log.prettify("utf-8"))
             sys.exit(1)
 
-
     def run(self):
         self.an.start()
+        status_before = True
+
         while(True):
-            packet_size = self.an.PACKET_SIZE
-            packet = bytearray(packet_size)
+            if 'off' in self.lp.getStatus():
+                if status_before is True:
+                    print("Turned off")
+                    status_before = False
+                    self.an.blackout()
+                    self.an.stop();
+            else:
+                if status_before is False:
+                    print("Turned on")
+                    self.an.start()
+                status_before = True
+                packet_size = self.an.PACKET_SIZE
+                packet = bytearray(packet_size)
 
-            colors = self.lp.getColors()
-            for fixture in self.fixtures:
-                color = colors[fixture['id']].split('-')[1].split(',')
-                packet[fixture['r']] = int(color[0])
-                packet[fixture['g']] = int(color[1])
-                packet[fixture['b']] = int(color[2])
-                packet[fixture['d']] = 255
+                colors = self.lp.getColors()
+                for fixture in self.fixtures:
+                    color = colors[fixture['id']].split('-')[1].split(',')
+                    packet[fixture['r']] = int(color[0])
+                    packet[fixture['g']] = int(color[1])
+                    packet[fixture['b']] = int(color[2])
+                    packet[fixture['d']] = 255
 
-            self.an.set(packet)
+                self.an.set(packet)
             sleep(1 / self.fps)
+
 
 artnet = ArtNet()
 artnet.run()
