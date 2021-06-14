@@ -1,4 +1,4 @@
-# TODO LIST: Config Wizard, Turn off lights trigger (Artnet has to set every value to 0), recognize termination
+# TODO LIST: Config Wizard, recognize termination
 # TODO: Fixture name duplicate error
 
 """
