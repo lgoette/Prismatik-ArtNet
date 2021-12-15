@@ -10,6 +10,7 @@ Source: <Github-Link>
 import lightpack, StupidArtnet, configparser, os, re, sys
 from time import sleep
 from itertools import combinations
+from colorsys import rgb_to_hsv, hsv_to_rgb
 from bs4 import BeautifulSoup
 
 class bcolors:
@@ -21,6 +22,7 @@ class bcolors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
 
 class ArtNet:
     def __init__(self):
@@ -141,7 +143,7 @@ class ArtNet:
                     print("Turned off")
                     status_before = False
                     self.an.blackout()
-                    self.an.stop();
+                    self.an.stop()
             else:
                 if status_before is False:
                     print("Turned on")
@@ -153,6 +155,8 @@ class ArtNet:
                 colors = self.lp.getColors()
                 for fixture in self.fixtures:
                     color = colors[fixture['id']].split('-')[1].split(',')
+                    color_hsv = rgb_to_hsv(int(color[0]), int(color[1]), int(color[2]))
+                    color = hsv_to_rgb(color_hsv[0], min(1, color_hsv[1]*int(self.config.get('Settings', 'saturation'))/100), color_hsv[2])
                     packet[fixture['r']] = int(color[0])
                     packet[fixture['g']] = int(color[1])
                     packet[fixture['b']] = int(color[2])
